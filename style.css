@@ -734,15 +734,16 @@ input {
 /* Pie de página */
 .footer {
   background: linear-gradient(180deg, #1f2a24 0%, #162019 100%);
-  color: rgba(255,255,255,0.88);
+  color: rgba(255, 255, 255, 0.92);
   margin-top: 20px;
 }
 
 .footer-content {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1fr;
+  grid-template-columns: minmax(240px, 1.2fr) minmax(220px, 0.9fr) minmax(260px, 1.1fr);
   gap: 32px;
-  padding: 56px 0 34px;
+  padding: 60px 0 36px;
+  align-items: start;
 }
 
 .footer-brand h3,
@@ -752,26 +753,28 @@ input {
 }
 
 .footer-brand h3 {
-  font-size: 1.45rem;
+  font-size: 1.55rem;
   color: #ffffff;
 }
 
 .footer-brand p,
 .footer-note p {
-  color: rgba(255,255,255,0.72);
-  font-size: 0.95rem;
-  max-width: 420px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  max-width: 450px;
 }
 
 .footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 10px 18px;
 }
 
 .footer-links a {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.78);
   transition: var(--transition);
+  font-size: 0.95rem;
 }
 
 .footer-links a:hover {
@@ -779,15 +782,45 @@ input {
   transform: translateX(4px);
 }
 
+.footer-note {
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 22px;
+}
+
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 22px 0 26px;
+}
+
+.footer-bottom .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .footer-bottom p {
-  text-align: center;
-  color: rgba(255,255,255,0.62);
-  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .footer-links {
+    grid-template-columns: 1fr;
+  }
 }
 
 @keyframes fadeUp {
