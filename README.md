@@ -65,7 +65,7 @@ Muestra los registros guardados con su nivel de riesgo.
 
 La página se actualiza automáticamente cada 10 segundos.
 
-![Dashboard](./img/dashboard.png)
+![Dashboard](./img/dashboard1.png)
 
 ---
 
