@@ -3,53 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gas Care Senior</title>
+  <title>GasCare Senior</title>
+
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
 </head>
 <body>
 
   <header class="header">
     <nav class="navbar container">
-      <div class="logo">Gas Care Senior</div>
-      <ul class="nav-links">
+      <a href="#inicio" class="logo">GasCare Senior</a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#iot">IoT</a></li>
-        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#hogar">Hogar</a></li>
+        <li><a href="#adultos">Adultos mayores</a></li>
+        <li><a href="#gas">Riesgo por gas</a></li>
         <li><a href="#funcionamiento">Funcionamiento</a></li>
-        <li><a href="#riesgo">Riesgo</a></li>
         <li><a href="#registro">Registro</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="inicio">
+
+    <section class="hero" id="inicio" data-state="safe">
       <div class="container hero-content">
         <div class="hero-text">
           <span class="tag">Protección inteligente para el hogar</span>
-          <h1>Gas Care Senior</h1>
-          <p>
-            Sistema IoT diseñado para detectar niveles peligrosos de gas, activar alertas
-            preventivas y brindar mayor seguridad a los adultos mayores dentro del hogar.
+          <h1>GasCare Senior</h1>
+          <p id="hero-message">
+            El ambiente del hogar se encuentra dentro de un nivel seguro. El sistema sigue monitoreando.
           </p>
+
           <div class="hero-buttons">
             <a href="#registro" class="btn btn-primary">Registrar hogar</a>
             <a href="#funcionamiento" class="btn btn-secondary">Ver cómo funciona</a>
           </div>
-        </div>
 
-        <div class="hero-card">
-          <div class="status-card">
-            <h3>Estado del hogar</h3>
-            <p class="status normal">Nivel seguro</p>
-            <div class="status-info">
-              <span>Sensor activo</span>
-              <span>Monitoreo constante</span>
+          <div class="feature-strip">
+            <div class="feature-pill">
+              <i class="fa-solid fa-house-circle-check"></i>
+              <span>Monitoreo del hogar</span>
+            </div>
+            <div class="feature-pill">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>Alerta ante riesgo</span>
+            </div>
+            <div class="feature-pill">
+              <i class="fa-solid fa-user-shield"></i>
+              <span>Apoyo para la familia</span>
             </div>
           </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-glow-ring"></div>
+
+          <div class="gas-orb">
+            <div class="gas-core">
+              <i class="fa-solid fa-fire-flame-simple"></i>
+            </div>
+          </div>
+
+          <div class="floating-mini-card top" id="hero-top-card">
+            <strong>Sensor activo</strong>
+            <span>Lectura estable</span>
+          </div>
+
+          <div class="floating-mini-card bottom" id="hero-bottom-card">
+            <strong>Respuesta preventiva</strong>
+            <span>Monitoreo continuo</span>
+          </div>
+
+          <div class="hero-pulse hero-pulse-1"></div>
+          <div class="hero-pulse hero-pulse-2"></div>
         </div>
       </div>
     </section>
@@ -58,90 +100,260 @@
       <div class="container">
         <div class="section-title">
           <span>¿Qué es el IoT?</span>
-          <h2>Tecnología que escucha el entorno y actúa a tiempo</h2>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <h3>Sensores inteligentes</h3>
-            <p>
-              El Internet de las Cosas permite usar dispositivos capaces de captar datos del entorno,
-              como niveles de gas, temperatura o movimiento.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Conexión en tiempo real</h3>
-            <p>
-              Los dispositivos pueden comunicarse con plataformas digitales para registrar información,
-              generar alertas y facilitar el monitoreo remoto.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>Respuesta automática</h3>
-            <p>
-              Además de detectar riesgos, el sistema puede activar acciones de protección de forma rápida
-              para reducir accidentes en el hogar.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section benefits" id="beneficios">
-      <div class="container">
-        <div class="section-title">
-          <span>Beneficios en el hogar</span>
-          <h2>Una solución pensada para el cuidado y la prevención</h2>
+          <h2>Objetos conectados que ayudan a entender lo que pasa en casa</h2>
         </div>
 
         <div class="grid-2">
-          <div class="info-box">
-            <h3>Más seguridad para la familia</h3>
+          <article class="card icon-card">
+            <div class="icon-wrap">
+              <i class="fa-solid fa-wifi"></i>
+            </div>
+            <h3>Una idea simple</h3>
             <p>
-              Gas Care Senior ayuda a supervisar posibles riesgos por fugas de gas y permite actuar
-              antes de que el problema se convierta en una emergencia.
+              El Internet de las Cosas permite que dispositivos físicos recopilen información del entorno
+              y la usen para dar una respuesta útil. En este caso, el sistema recibe una lectura del sensor
+              y la convierte en una señal que puede advertir un peligro.
             </p>
-          </div>
+          </article>
 
-          <div class="info-box">
-            <h3>Apoyo para adultos mayores</h3>
+          <article class="card icon-card">
+            <div class="icon-wrap">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h3>Aplicado al hogar</h3>
             <p>
-              Muchos adultos mayores pasan tiempo solos en casa. Este sistema ofrece una capa adicional
-              de protección frente a situaciones que podrían pasar desapercibidas.
+              Cuando el IoT entra en la casa, la tecnología deja de ser un concepto lejano. Se convierte
+              en una herramienta práctica para vigilar condiciones importantes, registrar datos y apoyar
+              decisiones cuando aparece una situación que merece atención.
             </p>
-          </div>
-
-          <div class="info-box">
-            <h3>Monitoreo continuo</h3>
-            <p>
-              El uso de sensores y microcontroladores permite recopilar lecturas de forma constante
-              y mantener un historial de eventos para consulta.
-            </p>
-          </div>
-
-          <div class="info-box">
-            <h3>Automatización preventiva</h3>
-            <p>
-              Cuando se detecta un nivel peligroso, el sistema puede activar alarmas y simular el
-              cierre de la válvula del gas para disminuir el riesgo.
-            </p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section highlight">
+    <section class="section benefits" id="hogar">
+      <div class="container">
+        <div class="section-title">
+          <span>Beneficios en el hogar</span>
+          <h2>Más calma para la familia y más control sobre un riesgo que no siempre avisa</h2>
+        </div>
+
+        <div class="grid-2">
+          <article class="info-box icon-card">
+            <div class="icon-wrap">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <h3>Supervisión constante</h3>
+            <p>
+              No hace falta esperar a notar un problema de forma evidente. El sistema puede revisar el
+              ambiente con frecuencia y advertir cuando algo sale del rango esperado.
+            </p>
+          </article>
+
+          <article class="info-box icon-card">
+            <div class="icon-wrap">
+              <i class="fa-solid fa-bell"></i>
+            </div>
+            <h3>Advertencia oportuna</h3>
+            <p>
+              Una alerta a tiempo cambia mucho. Da margen para revisar, pedir ayuda o tomar medidas antes
+              de que la situación empeore.
+            </p>
+          </article>
+
+          <article class="info-box icon-card">
+            <div class="icon-wrap">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <h3>Registro de lecturas</h3>
+            <p>
+              Guardar la información ayuda a entender qué pasó, cuándo ocurrió y cómo respondió el sistema.
+              Eso también fortalece la parte técnica del proyecto.
+            </p>
+          </article>
+
+          <article class="info-box icon-card">
+            <div class="icon-wrap">
+              <i class="fa-solid fa-people-roof"></i>
+            </div>
+            <h3>Respaldo para la familia</h3>
+            <p>
+              Cuando un familiar no puede estar presente todo el tiempo, contar con una solución de apoyo
+              aporta tranquilidad y mejora la capacidad de reacción.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight" id="adultos">
       <div class="container highlight-content">
-        <div>
-          <span class="mini-tag">Cuidado del adulto mayor</span>
-          <h2>La prevención puede marcar la diferencia</h2>
+        <div class="highlight-text">
+          <span class="mini-tag">Seguridad para adultos mayores</span>
+          <h2>Una ayuda silenciosa que puede hacer mucha diferencia</h2>
           <p>
-            Las fugas de gas pueden ser silenciosas y peligrosas. En hogares con adultos mayores,
-            la reacción temprana es clave. Por eso, una solución IoT puede convertirse en un apoyo
-            real para proteger la vida, la salud y la tranquilidad de la familia.
+            Hay adultos mayores que pasan varias horas del día solos en casa. En ese escenario, una fuga
+            de gas puede convertirse en una emergencia seria porque el riesgo no siempre se percibe con rapidez.
+            A veces hay confusión, a veces el olor no se identifica de inmediato, y a veces simplemente no da
+            tiempo para reaccionar bien.
           </p>
+          <p>
+            GasCare Senior nace desde esa preocupación. La idea no es reemplazar el cuidado humano. La idea es
+            sumar una capa de apoyo que acompañe, avise y ayude a actuar con más velocidad cuando algo no está bien.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gas-section" id="gas">
+      <div class="container">
+        <div class="section-title">
+          <span>Riesgos asociados al uso de gas</span>
+          <h2>Un problema doméstico que puede crecer sin llamar la atención</h2>
+        </div>
+
+        <div class="grid-2">
+          <article class="card icon-card">
+            <div class="icon-wrap danger-icon">
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            <h3>Qué puede ocurrir</h3>
+            <p>
+              Una fuga de gas puede causar malestar, dolor de cabeza, mareo y, en casos más graves, una
+              intoxicación o un accidente mayor. Lo más delicado es que el problema puede avanzar mientras
+              la persona sigue con su rutina sin imaginar lo que está pasando.
+            </p>
+          </article>
+
+          <article class="card icon-card">
+            <div class="icon-wrap warning-icon">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <h3>Cómo ayuda la tecnología</h3>
+            <p>
+              Un sensor puede identificar una lectura fuera de lo normal. A partir de eso, el sistema puede
+              encender una alerta, activar una alarma sonora, simular el cierre de una válvula y dejar el dato
+              almacenado en el servidor. Así la respuesta no depende solo de que alguien note el peligro.
+            </p>
+          </article>
+        </div>
+
+        <div class="gas-alert-band">
+          <h3>Cuando el riesgo no se ve, detectar a tiempo lo cambia todo</h3>
+          <p>
+            Esa es la lógica detrás de GasCare Senior. No espera a que ocurra un accidente para reaccionar.
+            Busca dar una primera respuesta antes de que el problema se vuelva más grande.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section risk-section">
+      <div class="container">
+        <div class="section-title">
+          <span>Medidor visual de riesgo</span>
+          <h2>Una lectura simple para entender el estado del hogar</h2>
+        </div>
+
+        <div class="risk-meter-box" id="risk-meter-box">
+          <div class="risk-meter-header">
+            <div>
+              <h3>Nivel actual estimado</h3>
+              <p>
+                Este medidor representa de forma visual cómo cambia el estado del sistema según la lectura del sensor.
+              </p>
+            </div>
+            <div class="risk-badge safe-badge" id="risk-badge">
+              Normal
+            </div>
+          </div>
+
+          <div class="meter-bar">
+            <div class="meter-indicator" id="meter-indicator"></div>
+          </div>
+
+          <div class="meter-values">
+            <span>Seguro</span>
+            <span>Precaución</span>
+            <span>Crítico</span>
+          </div>
+
+          <div class="meter-controls">
+            <button class="meter-btn active" data-level="safe">Normal</button>
+            <button class="meter-btn" data-level="warning">Precaución</button>
+            <button class="meter-btn" data-level="danger">Crítico</button>
+          </div>
+
+          <p class="meter-help">
+            Puedes cambiar el nivel manualmente o escribir una lectura de gas en el formulario para que GasCare Senior actualice el estado de forma automática.
+          </p>
+
+          <div class="risk-grid">
+            <article class="risk-card safe">
+              <h3>Nivel normal</h3>
+              <p>
+                La lectura se mantiene dentro del rango esperado y no se detecta una amenaza inmediata.
+              </p>
+            </article>
+
+            <article class="risk-card warning">
+              <h3>Nivel de precaución</h3>
+              <p>
+                El valor comienza a subir. Conviene revisar la situación y estar pendiente del sistema.
+              </p>
+            </article>
+
+            <article class="risk-card danger">
+              <h3>Nivel crítico</h3>
+              <p>
+                El riesgo es alto. Se deben activar alertas y medidas de protección para reducir el peligro.
+              </p>
+            </article>
+          </div>
+        </div>
+
+          <button class="info-fab" id="info-fab" aria-label="Ver información sobre niveles de gas">
+            <i class="fa-solid fa-question"></i>
+          </button>
+
+          <div class="info-drawer" id="info-drawer">
+            <div class="info-drawer-header">
+              <h3>¿Cómo interpretar este medidor?</h3>
+              <button class="info-close" id="info-close" aria-label="Cerrar panel">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <div class="info-drawer-body">
+              <p>
+                En GasCare Senior, este medidor muestra una simulación visual del nivel de riesgo a partir de los datos del sensor. Su objetivo es ilustrar cómo reaccionaría un sistema doméstico ante un aumento de gas detectado, pero no sustituye un detector de gas certificado ni constituye una medida oficial de seguridad en el hogar.
+              </p>
+
+              <p>
+                El sensor MQ-2 es un sensor semiconductor de óxido metálico (SnO₂) diseñado para detectar gases combustibles y humo, especialmente LPG (gas licuado de petróleo), propano, hidrógeno y, con menor sensibilidad, metano y otros vapores inflamables. Diversas hojas de datos indican que su rango típico de trabajo para gases combustibles se sitúa alrededor de 300 a 10 000 ppm, pero estos valores dependen de la calibración, las condiciones ambientales y del tipo específico de gas. En un sistema real, es imprescindible definir con claridad qué gas se va a monitorizar, calibrar el sensor con mezclas conocidas y validar el desempeño antes de usar las lecturas como criterio de alarma de seguridad.
+              </p>
+
+              <p>
+                En situaciones reales, el riesgo de explosión se relaciona con los límites de inflamabilidad (LEL y UEL) de cada gas, más que con un número de ppm aislado. Para el metano, diferentes fuentes técnicas sitúan el rango inflamable en aire aproximadamente entre 5 % y 15 % en volumen, con valores más precisos cercanos a 5,3–14 % o LEL de 4,6 % y UEL de 15,8 % según las condiciones experimentales. Para el propano, guías de NIOSH y OSHA reportan un límite inferior de explosividad de 2,1 % y un límite superior de 9,5 % en aire. Por eso, cualquier sistema de alarma doméstico debe diseñarse considerando estos límites, las normas de seguridad vigentes y la certificación de los equipos, más allá de una simulación educativa como la de este proyecto.
+              </p>
+
+              <div class="apa-box">
+                <h4>Referencias</h4>
+                <p>
+                  National Institute for Occupational Safety and Health. (2019). <em>NIOSH Pocket Guide to Chemical Hazards: Propane.</em> Centers for Disease Control and Prevention.
+                </p>
+                <p>
+                  National Institute for Occupational Safety and Health. (s. f.). <em>Guía de bolsillo de NIOSH sobre riesgos químicos.</em>
+                </p>
+                <p>
+                  Occupational Safety and Health Administration. (2025). <em>Propane.</em> U.S. Department of Labor.
+                </p>
+                <p>
+                  Hanwei Electronics Co., Ltd. (s. f.). <em>MQ-2 semiconductor sensor for combustible gas</em> [Hoja de datos].
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -150,65 +362,49 @@
       <div class="container">
         <div class="section-title">
           <span>Funcionamiento del sistema</span>
-          <h2>Así trabaja Gas Care Senior</h2>
+          <h2>Así responde GasCare Senior ante una posible fuga</h2>
         </div>
 
         <div class="steps">
-          <div class="step">
+          <article class="step">
             <div class="step-number">1</div>
-            <h3>Detección</h3>
-            <p>El sensor de gas captura la lectura del ambiente en tiempo real.</p>
-          </div>
+            <h3>Lectura del sensor</h3>
+            <p>
+              El sensor revisa el nivel de gas presente en el ambiente.
+            </p>
+          </article>
 
-          <div class="step">
+          <article class="step">
             <div class="step-number">2</div>
-            <h3>Análisis</h3>
-            <p>El ESP32 interpreta el valor obtenido y lo compara con umbrales de seguridad.</p>
-          </div>
+            <h3>Revisión del valor</h3>
+            <p>
+              El ESP32 compara la lectura con los límites de seguridad definidos.
+            </p>
+          </article>
 
-          <div class="step">
+          <article class="step">
             <div class="step-number">3</div>
-            <h3>Alerta</h3>
-            <p>Si existe peligro, se activa el LED rojo y una alarma sonora mediante el buzzer.</p>
-          </div>
+            <h3>Alerta del sistema</h3>
+            <p>
+              Si el valor es alto, el LED rojo se enciende y el buzzer avisa que algo no está bien.
+            </p>
+          </article>
 
-          <div class="step">
+          <article class="step">
             <div class="step-number">4</div>
-            <h3>Protección</h3>
-            <p>El servomotor simula el cierre de la válvula del gas para reducir el riesgo.</p>
-          </div>
+            <h3>Acción preventiva</h3>
+            <p>
+              El servomotor representa el cierre de la válvula del gas como medida de protección.
+            </p>
+          </article>
 
-          <div class="step">
+          <article class="step">
             <div class="step-number">5</div>
-            <h3>Registro</h3>
-            <p>La información puede enviarse al servidor para almacenarse en MySQL y generar alertas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section risk-section" id="riesgo">
-      <div class="container">
-        <div class="section-title">
-          <span>Niveles de riesgo</span>
-          <h2>Estados del sistema de monitoreo</h2>
-        </div>
-
-        <div class="risk-grid">
-          <div class="risk-card safe">
-            <h3>Normal</h3>
-            <p>El nivel de gas se encuentra dentro del rango seguro.</p>
-          </div>
-
-          <div class="risk-card warning">
-            <h3>Precaución</h3>
-            <p>La lectura comienza a subir y el sistema recomienda revisión.</p>
-          </div>
-
-          <div class="risk-card danger">
-            <h3>Alerta crítica</h3>
-            <p>Se detecta un nivel peligroso. Se activan medidas de protección.</p>
-          </div>
+            <h3>Registro y envío</h3>
+            <p>
+              Los datos pueden guardarse en MySQL y enviarse por PHP para dejar constancia del evento.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -217,66 +413,147 @@
       <div class="container">
         <div class="section-title">
           <span>Registro del hogar</span>
-          <h2>Formulario de monitoreo</h2>
+          <h2>Ingresa la información para el monitoreo</h2>
         </div>
 
         <form class="home-form" action="procesar.php" method="POST">
           <div class="form-group">
             <label for="direccion">Dirección del hogar</label>
-            <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle 45 # 12-30" required />
+            <input
+              type="text"
+              id="direccion"
+              name="direccion"
+              placeholder="Ej: Calle 45 # 12-30"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="telefono">Número telefónico de contacto</label>
-            <input type="text" id="telefono" name="telefono" placeholder="Ej: 3001234567" required />
+            <input
+              type="text"
+              id="telefono"
+              name="telefono"
+              placeholder="Ej: 3001234567"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="habitante1_nombre">Nombre del habitante 1</label>
-            <input type="text" id="habitante1_nombre" name="habitante1_nombre" placeholder="Nombre" required />
+            <input
+              type="text"
+              id="habitante1_nombre"
+              name="habitante1_nombre"
+              placeholder="Nombre"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="habitante1_apellido">Apellido del habitante 1</label>
-            <input type="text" id="habitante1_apellido" name="habitante1_apellido" placeholder="Apellido" required />
+            <input
+              type="text"
+              id="habitante1_apellido"
+              name="habitante1_apellido"
+              placeholder="Apellido"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="habitante2_nombre">Nombre del habitante 2</label>
-            <input type="text" id="habitante2_nombre" name="habitante2_nombre" placeholder="Nombre" required />
+            <input
+              type="text"
+              id="habitante2_nombre"
+              name="habitante2_nombre"
+              placeholder="Nombre"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="habitante2_apellido">Apellido del habitante 2</label>
-            <input type="text" id="habitante2_apellido" name="habitante2_apellido" placeholder="Apellido" required />
+            <input
+              type="text"
+              id="habitante2_apellido"
+              name="habitante2_apellido"
+              placeholder="Apellido"
+              required
+            />
           </div>
 
           <div class="form-group">
             <label for="correo_familiar">Correo del familiar responsable</label>
-            <input type="email" id="correo_familiar" name="correo_familiar" placeholder="ejemplo@correo.com" required />
+            <input
+              type="email"
+              id="correo_familiar"
+              name="correo_familiar"
+              placeholder="ejemplo@correo.com"
+              required
+            />
           </div>
 
           <div class="form-group">
-            <label for="lectura_gas">Lectura del sensor de gas (ppm)</label>
-            <input type="number" id="lectura_gas" name="lectura_gas" placeholder="Ej: 350" required />
+            <label for="lectura_gas">Lectura estimada del sensor de gas combustible (ppm)</label>
+            <input
+              type="number"
+              id="lectura_gas"
+              name="lectura_gas"
+              placeholder="Ej: 350 (simulación)"
+              required
+            />
           </div>
 
           <div class="form-group full-width">
-            <button type="submit" class="btn btn-primary">Enviar registro</button>
+            <button type="submit" class="btn btn-primary">
+              Enviar registro
+            </button>
           </div>
         </form>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <p>
-        Proyecto académico de Internet de las Cosas enfocado en la seguridad del hogar
-        y la protección de adultos mayores frente a fugas de gas.
-      </p>
-    </div>
-  </footer>
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <h3>GasCare Senior</h3>
+        <p>
+          Propuesta académica de Internet de las Cosas enfocada en la prevención de fugas de gas
+          y en la protección de adultos mayores dentro del hogar.
+        </p>
+      </div>
 
+      <div class="footer-links">
+        <h4>Secciones</h4>
+        <a href="#inicio">Inicio</a>
+        <a href="#iot">IoT</a>
+        <a href="#hogar">Hogar</a>
+        <a href="#adultos">Adultos mayores</a>
+        <a href="#gas">Riesgo por gas</a>
+        <a href="#funcionamiento">Funcionamiento</a>
+        <a href="#registro">Registro</a>
+      </div>
+
+      <div class="footer-note">
+        <h4>Enfoque del proyecto</h4>
+        <p>
+          El medidor visual representa una simulación académica del riesgo para mostrar
+          cómo reaccionaría el sistema ante una posible fuga de gas combustible.
+        </p>
+      </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>GasCare Senior · Proyecto final IoT</p>
+      <p>Creado con dedicación por Daniela Sophia Coavas Barboza · Universidad EAN</p>
+    </div>
+  </div>
+</footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
