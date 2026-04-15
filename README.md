@@ -1,8 +1,25 @@
 # GasCare Senior
 
-Este es un proyecto final para IoT que busca mejorar la seguridad del hogar y proteger a los adultos mayores frente a posibles fugas de gas.
+Un proyecto final de IoT diseñado para mejorar la seguridad en el hogar y proteger a los adultos mayores frente a fugas de gas.
 
-## Tecnologías usadas
+---
+
+## 🚀 Descripción
+
+Gas Care Senior combina sensores IoT y una solución web para detectar niveles de gas peligrosos, almacenar los datos en una base de datos y simular alertas preventivas. Es una propuesta práctica y educativa para visualizar cómo la tecnología puede apoyar el cuidado del hogar.
+
+---
+
+## ✨ Características
+
+- Detección de fugas de gas mediante IoT
+- Registro de eventos en MySQL
+- Interfaz web ligera para visualizar los datos
+- Estructura pensada para integración con ESP32 y simulación en Wokwi
+
+---
+
+## 🧩 Tecnologías usadas
 
 - HTML5
 - CSS3
@@ -11,22 +28,35 @@ Este es un proyecto final para IoT que busca mejorar la seguridad del hogar y pr
 - ESP32
 - Wokwi
 
-## Objetivo
+---
 
-Crear una solución IoT que detecte niveles peligrosos de gas en el hogar, registre los datos en una base de datos y simule alertas y acciones preventivas para proteger a las personas que habitan el lugar.
+## 🎯 Objetivo
 
-## Estructura del proyecto
+Desarrollar una solución IoT que detecte niveles peligrosos de gas en el hogar, registre la información en una base de datos y modele alertas y acciones preventivas para proteger a quienes viven allí.
 
-- `index.html`: página principal del proyecto
-- `style.css`: estilos visuales
-- `conexion.php`: conexión a MySQL
-- `procesar.php`: procesamiento del formulario
-- `dashboard.php`: visualización de registros
-- `database.sql`: script para crear la base de datos
+---
 
-## Autor
+## 📁 Estructura del proyecto
 
-Daniela Sophia Coavas Arboza
-Ingeniería de Sistemas Virtual
-Universidad EAN Bogotá, Colombia
-Proyecto académico desarrollado para la asignatura de IoT.
+- `index.html` — Página principal del proyecto
+- `style.css` — Estilos visuales
+- `conexion.php` — Conexión a la base de datos MySQL
+- `procesar.php` — Procesamiento del formulario y datos
+- `dashboard.php` — Visualización de registros e historial
+- `database.sql` — Script para crear la base de datos
+
+---
+
+## 👩‍💻 Autor
+
+**Daniela Sophia Coavas Arboza**
+
+- Ingeniería de Sistemas Virtual
+- Universidad EAN Bogotá, Colombia
+- Proyecto académico desarrollado para la asignatura de IoT
+
+---
+
+## 📌 Nota
+
+Este repositorio presenta una propuesta de seguridad para el hogar con foco en adultos mayores, ideal para aprender y experimentar con soluciones IoT y bases de datos.

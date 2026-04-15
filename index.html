@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gas Care Senior</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="header">
+    <nav class="navbar container">
+      <div class="logo">Gas Care Senior</div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#iot">IoT</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#funcionamiento">Funcionamiento</a></li>
+        <li><a href="#riesgo">Riesgo</a></li>
+        <li><a href="#registro">Registro</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <span class="tag">Protección inteligente para el hogar</span>
+          <h1>Gas Care Senior</h1>
+          <p>
+            Sistema IoT diseñado para detectar niveles peligrosos de gas, activar alertas
+            preventivas y brindar mayor seguridad a los adultos mayores dentro del hogar.
+          </p>
+          <div class="hero-buttons">
+            <a href="#registro" class="btn btn-primary">Registrar hogar</a>
+            <a href="#funcionamiento" class="btn btn-secondary">Ver cómo funciona</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="status-card">
+            <h3>Estado del hogar</h3>
+            <p class="status normal">Nivel seguro</p>
+            <div class="status-info">
+              <span>Sensor activo</span>
+              <span>Monitoreo constante</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro" id="iot">
+      <div class="container">
+        <div class="section-title">
+          <span>¿Qué es el IoT?</span>
+          <h2>Tecnología que escucha el entorno y actúa a tiempo</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Sensores inteligentes</h3>
+            <p>
+              El Internet de las Cosas permite usar dispositivos capaces de captar datos del entorno,
+              como niveles de gas, temperatura o movimiento.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Conexión en tiempo real</h3>
+            <p>
+              Los dispositivos pueden comunicarse con plataformas digitales para registrar información,
+              generar alertas y facilitar el monitoreo remoto.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Respuesta automática</h3>
+            <p>
+              Además de detectar riesgos, el sistema puede activar acciones de protección de forma rápida
+              para reducir accidentes en el hogar.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="beneficios">
+      <div class="container">
+        <div class="section-title">
+          <span>Beneficios en el hogar</span>
+          <h2>Una solución pensada para el cuidado y la prevención</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="info-box">
+            <h3>Más seguridad para la familia</h3>
+            <p>
+              Gas Care Senior ayuda a supervisar posibles riesgos por fugas de gas y permite actuar
+              antes de que el problema se convierta en una emergencia.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <h3>Apoyo para adultos mayores</h3>
+            <p>
+              Muchos adultos mayores pasan tiempo solos en casa. Este sistema ofrece una capa adicional
+              de protección frente a situaciones que podrían pasar desapercibidas.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <h3>Monitoreo continuo</h3>
+            <p>
+              El uso de sensores y microcontroladores permite recopilar lecturas de forma constante
+              y mantener un historial de eventos para consulta.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <h3>Automatización preventiva</h3>
+            <p>
+              Cuando se detecta un nivel peligroso, el sistema puede activar alarmas y simular el
+              cierre de la válvula del gas para disminuir el riesgo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight">
+      <div class="container highlight-content">
+        <div>
+          <span class="mini-tag">Cuidado del adulto mayor</span>
+          <h2>La prevención puede marcar la diferencia</h2>
+          <p>
+            Las fugas de gas pueden ser silenciosas y peligrosas. En hogares con adultos mayores,
+            la reacción temprana es clave. Por eso, una solución IoT puede convertirse en un apoyo
+            real para proteger la vida, la salud y la tranquilidad de la familia.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="funcionamiento">
+      <div class="container">
+        <div class="section-title">
+          <span>Funcionamiento del sistema</span>
+          <h2>Así trabaja Gas Care Senior</h2>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Detección</h3>
+            <p>El sensor de gas captura la lectura del ambiente en tiempo real.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Análisis</h3>
+            <p>El ESP32 interpreta el valor obtenido y lo compara con umbrales de seguridad.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Alerta</h3>
+            <p>Si existe peligro, se activa el LED rojo y una alarma sonora mediante el buzzer.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Protección</h3>
+            <p>El servomotor simula el cierre de la válvula del gas para reducir el riesgo.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">5</div>
+            <h3>Registro</h3>
+            <p>La información puede enviarse al servidor para almacenarse en MySQL y generar alertas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section risk-section" id="riesgo">
+      <div class="container">
+        <div class="section-title">
+          <span>Niveles de riesgo</span>
+          <h2>Estados del sistema de monitoreo</h2>
+        </div>
+
+        <div class="risk-grid">
+          <div class="risk-card safe">
+            <h3>Normal</h3>
+            <p>El nivel de gas se encuentra dentro del rango seguro.</p>
+          </div>
+
+          <div class="risk-card warning">
+            <h3>Precaución</h3>
+            <p>La lectura comienza a subir y el sistema recomienda revisión.</p>
+          </div>
+
+          <div class="risk-card danger">
+            <h3>Alerta crítica</h3>
+            <p>Se detecta un nivel peligroso. Se activan medidas de protección.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section form-section" id="registro">
+      <div class="container">
+        <div class="section-title">
+          <span>Registro del hogar</span>
+          <h2>Formulario de monitoreo</h2>
+        </div>
+
+        <form class="home-form" action="procesar.php" method="POST">
+          <div class="form-group">
+            <label for="direccion">Dirección del hogar</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Ej: Calle 45 # 12-30" required />
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Número telefónico de contacto</label>
+            <input type="text" id="telefono" name="telefono" placeholder="Ej: 3001234567" required />
+          </div>
+
+          <div class="form-group">
+            <label for="habitante1_nombre">Nombre del habitante 1</label>
+            <input type="text" id="habitante1_nombre" name="habitante1_nombre" placeholder="Nombre" required />
+          </div>
+
+          <div class="form-group">
+            <label for="habitante1_apellido">Apellido del habitante 1</label>
+            <input type="text" id="habitante1_apellido" name="habitante1_apellido" placeholder="Apellido" required />
+          </div>
+
+          <div class="form-group">
+            <label for="habitante2_nombre">Nombre del habitante 2</label>
+            <input type="text" id="habitante2_nombre" name="habitante2_nombre" placeholder="Nombre" required />
+          </div>
+
+          <div class="form-group">
+            <label for="habitante2_apellido">Apellido del habitante 2</label>
+            <input type="text" id="habitante2_apellido" name="habitante2_apellido" placeholder="Apellido" required />
+          </div>
+
+          <div class="form-group">
+            <label for="correo_familiar">Correo del familiar responsable</label>
+            <input type="email" id="correo_familiar" name="correo_familiar" placeholder="ejemplo@correo.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="lectura_gas">Lectura del sensor de gas (ppm)</label>
+            <input type="number" id="lectura_gas" name="lectura_gas" placeholder="Ej: 350" required />
+          </div>
+
+          <div class="form-group full-width">
+            <button type="submit" class="btn btn-primary">Enviar registro</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Proyecto académico de Internet de las Cosas enfocado en la seguridad del hogar
+        y la protección de adultos mayores frente a fugas de gas.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
