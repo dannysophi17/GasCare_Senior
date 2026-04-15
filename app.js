@@ -1,20 +1,21 @@
+// Selección de elementos en la página
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
 if (menuToggle && navLinks) {
   menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("show");
+    navLinks.classList.toggle("show");
 
-  const icon = menuToggle.querySelector("i");
+    const icon = menuToggle.querySelector("i");
 
-  if (navLinks.classList.contains("show")) {
-    icon.classList.remove("fa-bars");
-    icon.classList.add("fa-xmark");
-  } else {
-    icon.classList.remove("fa-xmark");
-    icon.classList.add("fa-bars");
-  }
-});
+    if (navLinks.classList.contains("show")) {
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-xmark");
+    } else {
+      icon.classList.remove("fa-xmark");
+      icon.classList.add("fa-bars");
+    }
+  });
 
   const navItems = navLinks.querySelectorAll("a");
   navItems.forEach((item) => {
@@ -39,6 +40,7 @@ const infoFab = document.getElementById("info-fab");
 const infoDrawer = document.getElementById("info-drawer");
 const infoClose = document.getElementById("info-close");
 
+// Configuración de los estados del medidor
 const meterConfig = {
   safe: {
     left: "18%",
@@ -75,6 +77,7 @@ const meterConfig = {
   }
 };
 
+// Actualiza la vista del medidor según el estado seleccionado
 function updateMeter(level) {
   const config = meterConfig[level];
   if (!config || !meterIndicator || !riskBadge) return;
@@ -99,6 +102,7 @@ function updateMeter(level) {
   if (heroBottomCard) heroBottomCard.innerHTML = `<strong>${config.bottomTitle}</strong><span>${config.bottomSubtitle}</span>`;
 }
 
+// Convierte la lectura en ppm a un nivel de riesgo
 function getLevelFromReading(value) {
   const ppm = Number(value);
   if (isNaN(ppm) || ppm < 0) return "safe";
@@ -107,18 +111,21 @@ function getLevelFromReading(value) {
   return "danger";
 }
 
+// Eventos de los botones del medidor
 meterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     updateMeter(button.dataset.level);
   });
 });
 
+// Actualiza el medidor cuando cambia la lectura manual
 if (lecturaGasInput) {
   lecturaGasInput.addEventListener("input", (event) => {
     updateMeter(getLevelFromReading(event.target.value));
   });
 }
 
+// Muestra u oculta el panel de información
 if (infoFab && infoDrawer) {
   infoFab.addEventListener("click", () => {
     infoDrawer.classList.toggle("show");
@@ -142,4 +149,5 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// Estado inicial del medidor
 updateMeter("safe");

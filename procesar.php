@@ -1,4 +1,5 @@
 <?php
+// Carga la conexión y recoge los datos enviados desde el formulario
 include("conexion.php");
 
 $direccion = $_POST['direccion'] ?? '';
@@ -38,6 +39,7 @@ $guardado = $stmt->execute();
 $nivel = "Normal";
 $nivelClase = "safe";
 
+// Ajusta la etiqueta de estado según la lectura enviada
 if ((int)$lectura_gas > 300 && (int)$lectura_gas <= 600) {
     $nivel = "Precaución";
     $nivelClase = "warning";
@@ -46,6 +48,16 @@ if ((int)$lectura_gas > 300 && (int)$lectura_gas <= 600) {
 if ((int)$lectura_gas > 600) {
     $nivel = "Crítico";
     $nivelClase = "danger";
+}
+
+if ((int)$lectura_gas > 600) {
+    // Envía alerta por correo cuando la lectura es crítica
+    $para = $correo_familiar;
+    $asunto = "Alerta GasCare Senior";
+    $mensaje = "Se detectó un nivel crítico de gas de $lectura_gas ppm en el hogar registrado. Se recomienda revisar inmediatamente.";
+    $cabeceras = "From: sistema@gascare.com";
+
+    @mail($para, $asunto, $mensaje, $cabeceras);
 }
 ?>
 <!DOCTYPE html>

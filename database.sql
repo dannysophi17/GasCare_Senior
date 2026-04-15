@@ -1,7 +1,9 @@
+-- Base de datos necesaria para GasCare Senior
 CREATE DATABASE gascare_db;
 
 USE gascare_db;
 
+-- Tabla de registros enviados desde el formulario
 CREATE TABLE registros (
   id INT AUTO_INCREMENT PRIMARY KEY,
   direccion VARCHAR(255),

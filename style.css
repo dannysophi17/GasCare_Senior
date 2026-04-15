@@ -1,3 +1,4 @@
+/* Estilos de GasCare Senior */
 * {
   margin: 0;
   padding: 0;
@@ -806,6 +807,7 @@ input {
   margin: 0;
 }
 
+/* Ajustes responsive para pantallas medianas */
 @media (max-width: 900px) {
   .footer-content {
     grid-template-columns: 1fr;

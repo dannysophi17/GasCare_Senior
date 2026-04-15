@@ -1,6 +1,7 @@
 <?php
 include("conexion.php");
 
+// Consulta los registros más recientes
 $sql = "SELECT * FROM registros ORDER BY fecha DESC";
 $result = $conn->query($sql);
 ?>
@@ -192,6 +193,7 @@ $result = $conn->query($sql);
             <?php if ($result && $result->num_rows > 0): ?>
               <?php while($row = $result->fetch_assoc()): ?>
                 <?php
+                  // Determina el estado según la lectura de gas
                   $lectura = (int)$row['lectura_gas'];
                   $estado = "Normal";
                   $estadoClase = "safe";
@@ -235,5 +237,10 @@ $result = $conn->query($sql);
       </div>
     </div>
   </div>
+<script>
+  setInterval(() => {
+    location.reload();
+  }, 10000);
+</script>
 </body>
 </html>
