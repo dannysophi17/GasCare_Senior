@@ -1,10 +1,6 @@
 /* Estilos de GasCare Senior */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
+/* Variables CSS personalizadas para colores, fuentes y medidas */
 :root {
   --primary: #49b675;
   --primary-dark: #2e8b57;
@@ -23,6 +19,7 @@
   --transition: all 0.35s ease;
 }
 
+/* Estilos generales del documento */
 html {
   scroll-behavior: smooth;
 }
@@ -49,11 +46,13 @@ input {
   font-family: inherit;
 }
 
+/* Contenedor principal para centrar contenido */
 .container {
   width: min(1120px, 90%);
   margin: 0 auto;
 }
 
+/* Estilos de las secciones */
 .section {
   padding: 95px 0;
 }
@@ -80,6 +79,7 @@ input {
   line-height: 1.18;
 }
 
+/* Estilos del header y navbar */
 .header {
   position: sticky;
   top: 0;
@@ -161,6 +161,7 @@ input {
   width: 100%;
 }
 
+/* Estilos de la sección hero (página principal) */
 .hero {
   padding: 110px 0 80px;
   position: relative;
@@ -390,7 +391,7 @@ input {
   color: var(--text-light);
 }
 
-/* Tarjetas */
+/* Estilos de tarjetas y elementos de contenido */
 .grid-2,
 .grid-3,
 .risk-grid {
@@ -690,7 +691,7 @@ input {
 .form-section {
   background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(244,244,244,0.75) 100%);
 }
-/* Formulario */
+/* Estilos del formulario de registro */
 .home-form {
   max-width: 980px;
   margin: 0 auto;
@@ -732,7 +733,7 @@ input {
 .full-width {
   grid-column: 1 / -1;
 }
-/* Pie de página */
+/* Estilos del pie de página */
 .footer {
   background: linear-gradient(180deg, #1f2a24 0%, #162019 100%);
   color: rgba(255, 255, 255, 0.92);

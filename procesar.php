@@ -1,16 +1,21 @@
 <?php
-// Carga la conexión y recoge los datos enviados desde el formulario
+// Procesar el formulario de registro de GasCare Senior
+// Este archivo recibe los datos del formulario, los guarda en la base de datos y envía alertas si es necesario
+
+// Incluir el archivo de conexión a la base de datos
 include("conexion.php");
 
-$direccion = $_POST['direccion'] ?? '';
-$telefono = $_POST['telefono'] ?? '';
-$habitante1_nombre = $_POST['habitante1_nombre'] ?? '';
-$habitante1_apellido = $_POST['habitante1_apellido'] ?? '';
-$habitante2_nombre = $_POST['habitante2_nombre'] ?? '';
-$habitante2_apellido = $_POST['habitante2_apellido'] ?? '';
-$correo_familiar = $_POST['correo_familiar'] ?? '';
-$lectura_gas = $_POST['lectura_gas'] ?? '';
+// Recibir y sanitizar los datos del formulario POST
+$direccion = $_POST['direccion'] ?? ''; // Dirección del hogar
+$telefono = $_POST['telefono'] ?? ''; // Teléfono de contacto
+$habitante1_nombre = $_POST['habitante1_nombre'] ?? ''; // Nombre del primer habitante
+$habitante1_apellido = $_POST['habitante1_apellido'] ?? ''; // Apellido del primer habitante
+$habitante2_nombre = $_POST['habitante2_nombre'] ?? ''; // Nombre del segundo habitante
+$habitante2_apellido = $_POST['habitante2_apellido'] ?? ''; // Apellido del segundo habitante
+$correo_familiar = $_POST['correo_familiar'] ?? ''; // Correo del familiar responsable
+$lectura_gas = $_POST['lectura_gas'] ?? ''; // Lectura estimada del sensor de gas en ppm
 
+// Preparar la consulta SQL para insertar el registro en la tabla 'registros'
 $stmt = $conn->prepare("INSERT INTO registros (
     direccion,
     telefono,
@@ -22,8 +27,9 @@ $stmt = $conn->prepare("INSERT INTO registros (
     lectura_gas
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
+// Vincular los parámetros a la consulta preparada para evitar inyección SQL
 $stmt->bind_param(
-    "sssssssi",
+    "sssssssi", // Tipos de datos: s para string, i para integer
     $direccion,
     $telefono,
     $habitante1_nombre,
@@ -34,29 +40,33 @@ $stmt->bind_param(
     $lectura_gas
 );
 
+// Ejecutar la consulta y verificar si se guardó correctamente
 $guardado = $stmt->execute();
 
-$nivel = "Normal";
-$nivelClase = "safe";
+// Determinar el nivel de riesgo basado en la lectura de gas
+$nivel = "Normal"; // Nivel por defecto
+$nivelClase = "safe"; // Clase CSS por defecto
 
-// Ajusta la etiqueta de estado según la lectura enviada
+// Si la lectura está entre 301 y 600 ppm, nivel de precaución
 if ((int)$lectura_gas > 300 && (int)$lectura_gas <= 600) {
     $nivel = "Precaución";
     $nivelClase = "warning";
 }
 
+// Si la lectura es mayor a 600 ppm, nivel crítico
 if ((int)$lectura_gas > 600) {
     $nivel = "Crítico";
     $nivelClase = "danger";
 }
 
+// Si el nivel es crítico, enviar alerta por correo electrónico
 if ((int)$lectura_gas > 600) {
-    // Envía alerta por correo cuando la lectura es crítica
-    $para = $correo_familiar;
-    $asunto = "Alerta GasCare Senior";
-    $mensaje = "Se detectó un nivel crítico de gas de $lectura_gas ppm en el hogar registrado. Se recomienda revisar inmediatamente.";
-    $cabeceras = "From: sistema@gascare.com";
+    $para = $correo_familiar; // Destinatario
+    $asunto = "Alerta GasCare Senior"; // Asunto del correo
+    $mensaje = "Se detectó un nivel crítico de gas de $lectura_gas ppm en el hogar registrado. Se recomienda revisar inmediatamente."; // Cuerpo del mensaje
+    $cabeceras = "From: sistema@gascare.com"; // Remitente
 
+    // Enviar el correo (usando @ para suprimir errores si falla)
     @mail($para, $asunto, $mensaje, $cabeceras);
 }
 ?>

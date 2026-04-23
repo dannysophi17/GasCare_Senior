@@ -1,13 +1,15 @@
-// Selección de elementos en la página
+// Seleccionar elementos del DOM para el menú de navegación
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
+// Si los elementos existen, agregar funcionalidad al menú móvil
 if (menuToggle && navLinks) {
+  // Evento para alternar la visibilidad del menú al hacer clic en el botón
   menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
+    navLinks.classList.toggle("show"); // Mostrar/ocultar el menú
 
+    // Cambiar el ícono del botón entre hamburguesa y X
     const icon = menuToggle.querySelector("i");
-
     if (navLinks.classList.contains("show")) {
       icon.classList.remove("fa-bars");
       icon.classList.add("fa-xmark");
@@ -17,6 +19,7 @@ if (menuToggle && navLinks) {
     }
   });
 
+  // Para cada enlace del menú, ocultar el menú al hacer clic (en móviles)
   const navItems = navLinks.querySelectorAll("a");
   navItems.forEach((item) => {
     item.addEventListener("click", () => {
@@ -27,6 +30,7 @@ if (menuToggle && navLinks) {
   });
 }
 
+// Seleccionar elementos del DOM para el medidor de riesgo
 const meterButtons = document.querySelectorAll(".meter-btn");
 const meterIndicator = document.getElementById("meter-indicator");
 const riskBadge = document.getElementById("risk-badge");
@@ -36,22 +40,24 @@ const heroMessage = document.getElementById("hero-message");
 const heroTopCard = document.getElementById("hero-top-card");
 const heroBottomCard = document.getElementById("hero-bottom-card");
 
+// Seleccionar elementos para el panel de información flotante
 const infoFab = document.getElementById("info-fab");
 const infoDrawer = document.getElementById("info-drawer");
 const infoClose = document.getElementById("info-close");
 
-// Configuración de los estados del medidor
+// Configuración de los estados del medidor de riesgo
+// Cada estado define la posición, texto, clase CSS, color y mensajes para la interfaz
 const meterConfig = {
   safe: {
-    left: "18%",
-    text: "Normal",
-    badgeClass: "safe-badge",
-    borderColor: "#2e8b57",
-    heroText: "El ambiente del hogar se mantiene estable. No se detecta riesgo en este momento.",
-    topTitle: "Sensor activo",
-    topSubtitle: "Lectura estable",
-    bottomTitle: "Respuesta preventiva",
-    bottomSubtitle: "Monitoreo continuo"
+    left: "18%", // Posición del indicador en la barra
+    text: "Normal", // Texto del badge
+    badgeClass: "safe-badge", // Clase CSS para el badge
+    borderColor: "#2e8b57", // Color del borde del indicador
+    heroText: "El ambiente del hogar se mantiene estable. No se detecta riesgo en este momento.", // Mensaje en la sección hero
+    topTitle: "Sensor activo", // Título de la tarjeta superior
+    topSubtitle: "Lectura estable", // Subtítulo de la tarjeta superior
+    bottomTitle: "Respuesta preventiva", // Título de la tarjeta inferior
+    bottomSubtitle: "Monitoreo continuo" // Subtítulo de la tarjeta inferior
   },
   warning: {
     left: "55%",
@@ -77,18 +83,25 @@ const meterConfig = {
   }
 };
 
-// Actualiza la vista del medidor según el estado seleccionado
+// Función que actualiza la vista del medidor según el nivel de riesgo seleccionado
 function updateMeter(level) {
+  // Obtener la configuración correspondiente al nivel
   const config = meterConfig[level];
+  // Si no existe configuración o elementos del DOM, salir de la función
   if (!config || !meterIndicator || !riskBadge) return;
 
+  // Actualizar la posición del indicador en la barra
   meterIndicator.style.left = config.left;
+  // Cambiar el color del borde del indicador
   meterIndicator.style.borderColor = config.borderColor;
 
+  // Actualizar el texto del badge de riesgo
   riskBadge.textContent = config.text;
+  // Remover clases anteriores y agregar la nueva clase del badge
   riskBadge.classList.remove("safe-badge", "warning-badge", "danger-badge");
   riskBadge.classList.add(config.badgeClass);
 
+  // Actualizar los botones del medidor: remover 'active' de todos y agregar al correspondiente
   meterButtons.forEach((button) => {
     button.classList.remove("active");
     if (button.dataset.level === level) {
@@ -96,58 +109,66 @@ function updateMeter(level) {
     }
   });
 
+  // Actualizar el atributo 'data-state' de la sección hero
   if (hero) hero.setAttribute("data-state", level);
+  // Actualizar el mensaje de la sección hero
   if (heroMessage) heroMessage.textContent = config.heroText;
+  // Actualizar el contenido de las tarjetas flotantes
   if (heroTopCard) heroTopCard.innerHTML = `<strong>${config.topTitle}</strong><span>${config.topSubtitle}</span>`;
   if (heroBottomCard) heroBottomCard.innerHTML = `<strong>${config.bottomTitle}</strong><span>${config.bottomSubtitle}</span>`;
 }
 
-// Convierte la lectura en ppm a un nivel de riesgo
+// Función que convierte una lectura de gas en ppm a un nivel de riesgo
 function getLevelFromReading(value) {
-  const ppm = Number(value);
-  if (isNaN(ppm) || ppm < 0) return "safe";
-  if (ppm <= 300) return "safe";
-  if (ppm <= 600) return "warning";
-  return "danger";
+  const ppm = Number(value); // Convertir el valor a número
+  if (isNaN(ppm) || ppm < 0) return "safe"; // Si no es válido o negativo, devolver 'safe'
+  if (ppm <= 300) return "safe"; // Nivel normal: 0-300 ppm
+  if (ppm <= 600) return "warning"; // Nivel de precaución: 301-600 ppm
+  return "danger"; // Nivel crítico: >600 ppm
 }
 
-// Eventos de los botones del medidor
+// Agregar eventos a los botones del medidor para cambiar el estado manualmente
 meterButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    updateMeter(button.dataset.level);
+    updateMeter(button.dataset.level); // Actualizar el medidor al nivel del botón clicado
   });
 });
 
-// Actualiza el medidor cuando cambia la lectura manual
+// Agregar evento al input de lectura de gas para actualizar automáticamente
 if (lecturaGasInput) {
   lecturaGasInput.addEventListener("input", (event) => {
+    // Obtener el nivel basado en el valor del input y actualizar el medidor
     updateMeter(getLevelFromReading(event.target.value));
   });
 }
 
-// Muestra u oculta el panel de información
+// Funcionalidad del panel de información flotante
 if (infoFab && infoDrawer) {
+  // Mostrar/ocultar el panel al hacer clic en el botón flotante
   infoFab.addEventListener("click", () => {
     infoDrawer.classList.toggle("show");
   });
 }
 
 if (infoClose && infoDrawer) {
+  // Cerrar el panel al hacer clic en el botón de cerrar
   infoClose.addEventListener("click", () => {
     infoDrawer.classList.remove("show");
   });
 }
 
+// Cerrar el panel si se hace clic fuera de él
 document.addEventListener("click", (event) => {
   if (!infoDrawer || !infoFab) return;
 
-  const clickedInsideDrawer = infoDrawer.contains(event.target);
-  const clickedFab = infoFab.contains(event.target);
+  const clickedInsideDrawer = infoDrawer.contains(event.target); // Verificar si el clic fue dentro del drawer
+  const clickedFab = infoFab.contains(event.target); // Verificar si el clic fue en el fab
 
+  // Si no fue dentro del drawer ni en el fab, cerrar el panel
   if (!clickedInsideDrawer && !clickedFab) {
     infoDrawer.classList.remove("show");
   }
 });
 
-// Estado inicial del medidor
+// Estado inicial del medidor: establecer en 'safe'
 updateMeter("safe");

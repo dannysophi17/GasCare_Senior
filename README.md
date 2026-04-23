@@ -1,28 +1,29 @@
 # GasCare Senior
 
-GasCare Senior es una propuesta que muestra cómo se puede usar IoT para mejorar la seguridad en el hogar, especialmente cuando hay riesgo de fugas de gas y viven adultos mayores.
+GasCare Senior es una propuesta que muestra cómo el IoT puede ayudar a mejorar la seguridad en el hogar, especialmente en casos donde hay riesgo de fugas de gas y viven adultos mayores.
 
-El proyecto combina una página web, un backend en PHP, una base de datos en MySQL y una simulación con ESP32.
+El proyecto integra una página web, un backend en PHP con base de datos MySQL y un sistema físico con ESP32 que permite detectar cambios en el ambiente.
 
 ---
 
 ## Sobre el proyecto
 
-La idea es simple. Muchas fugas de gas pasan desapercibidas hasta que ya es tarde. Este sistema intenta mostrar cómo se podría detectar una situación de riesgo a tiempo y reaccionar.
+Las fugas de gas pueden pasar desapercibidas hasta que ya representan un riesgo. Este sistema busca mostrar cómo se puede detectar ese cambio a tiempo y generar una respuesta básica.
 
-El usuario ingresa datos del hogar junto con una lectura estimada del gas. A partir de ese valor, el sistema interpreta el nivel de riesgo y guarda el registro para poder consultarlo después.
+El usuario registra los datos del hogar junto con una lectura de gas. Esa información se guarda y se puede visualizar en un dashboard.
 
 ---
 
 ## Cómo funciona
 
-El flujo es el siguiente:
+El sistema sigue este flujo:
 
-- Se ingresan los datos del hogar en el formulario  
-- Se registra una lectura estimada en ppm  
-- El sistema clasifica el nivel de riesgo  
-- Los datos se guardan en la base de datos  
-- El dashboard muestra los registros más recientes  
+- El usuario ingresa los datos del hogar en el formulario  
+- Se registra una lectura de gas en ppm  
+- El ESP32 envía los datos al servidor usando HTTP POST  
+- El backend en PHP procesa la información  
+- Los datos se guardan en MySQL  
+- El dashboard muestra los registros actualizados  
 
 ---
 
@@ -34,13 +35,13 @@ Las lecturas se interpretan así:
 - 301 a 600 ppm → Precaución  
 - 601 a 1000 ppm → Crítico  
 
-Esta misma lógica se usa tanto en la web como en la simulación del ESP32.
+Esta misma lógica se aplica tanto en la web como en el sistema físico.
 
 ---
 
-## Interfaz principal
+## Interfaz
 
-Aquí el usuario entiende el propósito del sistema y puede interactuar con el formulario.
+La página web permite entender el propósito del sistema y registrar los datos del hogar.
 
 ![Inicio](./img/inicio.png)
 
@@ -50,10 +51,10 @@ Aquí el usuario entiende el propósito del sistema y puede interactuar con el f
 
 Permite registrar:
 
-- Dirección del hogar  
+- Dirección  
 - Teléfono  
 - Habitantes  
-- Lectura estimada del gas en ppm  
+- Lectura del gas en ppm  
 
 ![Formulario](./img/formulario.png)
 
@@ -61,17 +62,42 @@ Permite registrar:
 
 ## Dashboard
 
-Muestra los registros guardados con su nivel de riesgo.
+Muestra los registros almacenados con su nivel de riesgo.
 
-La página se actualiza automáticamente cada 10 segundos.
+Se actualiza automáticamente cada 10 segundos.
 
 ![Dashboard](./img/dashboard.png)
 
 ---
 
-## Lógica del sistema
+## Sistema con ESP32
 
-En la simulación, el ESP32 toma una lectura analógica del sensor y la convierte a ppm usando una escala interna.
+El sistema utiliza:
+
+- ESP32  
+- Sensor MQ-2  
+- LCD 16x2 I2C  
+- LEDs  
+- Buzzer  
+- Servomotor  
+
+El sensor MQ-2 entrega una lectura analógica que se convierte a un valor aproximado en ppm.
+
+Dependiendo del valor detectado:
+
+- Se encienden LEDs (verde, amarillo o rojo)  
+- Se activa un buzzer como alerta  
+- Un servomotor simula el cierre del gas  
+- La LCD muestra la lectura y el estado  
+
+Además, el ESP32 envía los datos al servidor para su almacenamiento.
+
+---
+
+## Conversión de lectura
+
+La conversión de la lectura del sensor se realiza directamente en el ESP32 usando una escala ajustada según pruebas reales.
 
 ```cpp
-map(valor, 0, 4095, 0, 1000);
+int ppm = map(lecturaGas, rawMin, rawMax, 0, 1000);
+ppm = constrain(ppm, 0, 1000);

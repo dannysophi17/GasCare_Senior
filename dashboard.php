@@ -1,8 +1,11 @@
 <?php
+// Incluir el archivo de conexión a la base de datos
 include("conexion.php");
 
-// Consulta los registros más recientes
+// Consulta SQL para obtener todos los registros ordenados por fecha descendente (más recientes primero)
 $sql = "SELECT * FROM registros ORDER BY fecha DESC";
+
+// Ejecutar la consulta y almacenar el resultado
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -193,16 +196,18 @@ $result = $conn->query($sql);
             <?php if ($result && $result->num_rows > 0): ?>
               <?php while($row = $result->fetch_assoc()): ?>
                 <?php
-                  // Determina el estado según la lectura de gas
-                  $lectura = (int)$row['lectura_gas'];
-                  $estado = "Normal";
-                  $estadoClase = "safe";
+                  // Determinar el estado del registro basado en la lectura de gas
+                  $lectura = (int)$row['lectura_gas']; // Convertir la lectura a entero
+                  $estado = "Normal"; // Estado por defecto
+                  $estadoClase = "safe"; // Clase CSS por defecto
 
+                  // Si la lectura está entre 301 y 600, cambiar a precaución
                   if ($lectura > 300 && $lectura <= 600) {
                       $estado = "Precaución";
                       $estadoClase = "warning";
                   }
 
+                  // Si la lectura es mayor a 600, cambiar a crítico
                   if ($lectura > 600) {
                       $estado = "Crítico";
                       $estadoClase = "danger";
